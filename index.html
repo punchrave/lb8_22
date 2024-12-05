@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Объект Поэт</title>
+  <script>
+    // Конструктор для создания объекта "Поэт"
+    function Poet(name, nationality, famousWork) {
+      this.name = name; // Имя поэта
+      this.nationality = nationality; // Национальность
+      this.famousWork = famousWork; // Самое известное произведение
+
+      // Метод: вывод информации о поэте
+      this.getInfo = function () {
+        return `Имя: ${this.name}, Национальность: ${this.nationality}, Известное произведение: ${this.famousWork}`;
+      };
+
+      // Метод: приветствие от поэта
+      this.greet = function () {
+        return `${this.name} говорит: "Добро пожаловать в мир поэзии!"`;
+      };
+    }
+
+    // Создание 10 экземпляров объекта "Поэт"
+    const poets = [
+      new Poet("Александр Пушкин", "Русский", "Евгений Онегин"),
+      new Poet("Уильям Шекспир", "Англичанин", "Гамлет"),
+      new Poet("Руми", "Перс", "Маснави"),
+      new Poet("Джаннис Рицос", "Грек", "Эпитафия"),
+      new Poet("Эмили Дикинсон", "Американка", "Надеюсь, ты полюбишь"),
+      new Poet("Тарас Шевченко", "Украинец", "Кобзарь"),
+      new Poet("Пабло Неруда", "Чилиец", "Стихи о любви"),
+      new Poet("Федерико Гарсия Лорка", "Испанец", "Цыганский романс"),
+      new Poet("Владимир Маяковский", "Русский", "Облако в штанах"),
+      new Poet("Чеслав Милош", "Поляк", "Долина Иса")
+    ];
+
+    // Функция для отображения данных на странице
+    function displayPoets() {
+      const output = document.getElementById('poetsOutput');
+      poets.forEach((poet, index) => {
+        const poetDiv = document.createElement('div');
+        poetDiv.innerHTML = `<strong>Поэт ${index + 1}</strong>: ${poet.getInfo()} <br> ${poet.greet()} <hr>`;
+        output.appendChild(poetDiv);
+      });
+    }
+
+    // Вызов функции при загрузке страницы
+    window.onload = displayPoets;
+  </script>
+</head>
+<body>
+  <h1>Список Поэтов</h1>
+  <div id="poetsOutput"></div>
+</body>
+</html>
